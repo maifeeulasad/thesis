@@ -1,0 +1,40 @@
+\begin{figure}[hbt!]
+  \centering
+
+  \resizebox{\textwidth}{0.8\textwidth}{%
+
+
+    \begin{tikzpicture}
+      \begin{axis}[
+          legend style={at={(1,0)},anchor=south east},
+          xlabel=$X here$,
+          ylabel=$y here$,
+          xmin=0, xmax=5,
+          ymin=10, ymax=60,]
+        \addplot[black] plot coordinates {
+            (0, 50)
+(1, 60)
+          };
+        \addlegendentry{AAAAAAAAA}
+
+        \addplot[blue] plot coordinates {
+            (0, 40)
+(1, 30)
+          };
+        \addlegendentry{Bb}
+
+        \addplot[green] plot coordinates {
+            (0, 10)
+(2, 20)
+          };
+        \addlegendentry{C}
+
+      \end{axis}
+    \end{tikzpicture}
+  }%
+
+
+
+
+  \caption{Comp 1}
+\end{figure}

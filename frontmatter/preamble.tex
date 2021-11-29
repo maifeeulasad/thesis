@@ -59,14 +59,19 @@
 
 %-------------------- Bibliography
 
-\usepackage[backend=biber,articletitle=true,style=chem-rsc,doi=false]{biblatex}
+\usepackage[style=chicago-authordate,strict,backend=bibtex8,babel=other,bibencoding=inputenc]{biblatex}
 
+%\usepackage{biblatex-chicago}
+
+
+%\usepackage[notes,backend=biber]{biblatex-chicago}
+%\usepackage[strict,backend=bibtex8,babel=other,bibencoding=inputenc]{biblatex-chicago}
 
 %-------------------- Hyperlinks in your document.
 \usepackage{hyperref}
 \hypersetup{
 	colorlinks   = true,
-	allcolors    = blue
+	allcolors    = black
 }
 % The hyperref package allows you to have clickable links in your pdf. It also allows you to have the mailto link associated with your name. It can be  a bit finicky, so load it last.
 
@@ -74,3 +79,132 @@
 \renewcommand{\thefootnote}{\arabic{footnote}}
 
 %-------------------- Add your own packages here
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{spverbatim}
+\usepackage{pythonhighlight}
+\usepackage{graphicx} 
+\usepackage{caption,subcaption}
+\usepackage{pgfplots}
+\usepackage{svg}
+\usepackage{pgf-pie}  
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,arrows} 
+
+% \usepackage[numbers]{natbib}
+% \setcitestyle{numbers}
+
+
+\usetikzlibrary{positioning}
+
+
+\newcommand{\R}{\mathbb{R}}
+
+\tikzset{%
+  every neuron/.style={
+    circle,
+    draw,
+    minimum size=1cm
+  },
+  neuron missing/.style={
+    draw=none, 
+    scale=4,
+    text height=0.333cm,
+    execute at begin node=\color{black}$\vdots$
+  },
+}
+
+
+
+
+
+\tikzstyle{block} = [rectangle, draw, fill=yellow!50,   
+    text width=4.5em, text centered, rounded corners, minimum height=4em] 
+\tikzstyle{line} = [draw, -latex']  
+\tikzstyle{cloud} = [draw, ellipse,text width= 2.9em, fill=red!50, node distance=2cm, minimum height=3em]  
+ \tikzstyle{io} = [trapezium, draw, trapezium right angle=110, rounded corners, fill=red!20, node distance=1.9cm, minimum height=2.9em]    
+ 
+ 
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{decorations.pathreplacing}
+
+
+
+
+\definecolor{c1}{HTML}{DCDCDC}
+\definecolor{c2}{HTML}{FFFFFF}
+\definecolor{c3}{HTML}{DCDCDC}
+\definecolor{c4}{HTML}{FFFFFF}
+\definecolor{c5}{HTML}{DCDCDC}
+\definecolor{c6}{HTML}{FFFFFF}
+\newcommand*{\xMin}{0}%
+\newcommand*{\xMax}{6}%
+\newcommand*{\yMin}{0}%
+\newcommand*{\yMax}{4}%
+
+\newcommand*{\xMinR}{9.5}%
+\newcommand*{\xMaxR}{12.5}%
+\newcommand*{\yMinR}{1}%
+\newcommand*{\yMaxR}{3}%
+
+
+
+\newcommand{\distance}{6}
+\newcommand{\xup}{3.5}
+\newcommand{\yup}{6}
+\newcommand{\upsizex}{1}
+\newcommand{\upsizey}{2}
+\newcommand{\upshift}{3/4*\upsizey}
+\newcommand{\distancedots}{1}
+
+
+
+
+\definecolor{rtd}{HTML}{000000}
+\definecolor{dgd}{HTML}{000000}
+
+
+
+\usetikzlibrary{patterns}
+\usepgfplotslibrary{groupplots}
+
+\usepackage{setspace}
+\setstretch{1}
+
+
+\usepackage{nomencl}
+
+
+
+\usetikzlibrary{shapes,arrows,calc}
+
+\newcommand{\circular}[2]{
+\node (0) at (0,0){};
+\xdef\Radious{#2}
+\foreach \nodetext[count=\i] in {#1} {
+\xdef\totalIt{\i}
+}
+\foreach \nodetext[count=\i] in {#1} {
+\pgfmathsetmacro\myprev{int{\i-1}}
+\pgfmathsetmacro\curxdispl{cos(90-360/\totalIt*(\i-1))*\Radious}
+\pgfmathsetmacro\curydispl{sin(90-360/\totalIt*(\i-1))*\Radious}
+\path  ($(\curxdispl cm,\curydispl cm)$) node[block,anchor=center] (\i) {\nodetext};
+}
+
+\foreach \nodetext[count=\i] in {#1}{
+\pgfmathsetmacro\mynext{\ifnum\i<\totalIt int(\i+1)\else 1\fi}
+\path[draw,-latex] (\i) to(\mynext);
+}
+}
+
+\usepackage{lastpage}
+
+
+
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead{}
+\pagestyle{fancy}

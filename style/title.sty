@@ -12,14 +12,7 @@
 \newif\ifhonours
 \newif\ifmasters
 \newif\ifpartial
-\newif\ifnosupervisor
-\newif\ifmultiplesupervisors
-\newif\ifcosupervisor
-\newif\ifnocosupervisor
-\newif\ifmultiplecosupervisors
 \newif\ifsubject
-\newif\ifschool
-  \schooltrue
   
 \newif\ifreport
 \newif\ifhorizontal
@@ -130,7 +123,6 @@
   \subjecttrue
   \reporttrue 
   \partialtrue 
-  \nosupervisortrue
 }
 
 % For all other thesis types. 
@@ -141,28 +133,8 @@
   \partialtrue 
   \subjectfalse
   \reportfalse
-  \nosupervisortrue
 }
 
-% In case you belong to an institute or some other affiliation (such as AIIM)
-% instead of a school.
-\DeclareOption{noschool}{%
-  \newcommand\@schooltitle{} 
-  \newcommand\@school{}
-}
-
-% Determining the pluralisation (or absence) of 'supervisor' acording to the
-% number of supervisors.
-\DeclareOption{nosupervisor}{% also achievable by using \supervisor[0]{}
-  \nosupervisortrue
-  \cosupervisorfalse 
-  \multiplesupervisorsfalse
-}
-
-\DeclareOption{cosupervisor}{%
-  \nocosupervisorfalse
-  \cosupervisortrue
-}
 
 \DeclareOption{horizontal}{%
   \horizontaltrue
@@ -314,21 +286,10 @@
   \gdef\@subject{#1}%
 } 
 
-% \school{}
-% Dummy text
-\newcommand\@school{%
-  Your School%
-  \@latex@warning@no@line{No \noexpand\school specified!}%
-}
-
-% Command
-\newcommand{\school}[1]{%
-  \gdef\@school{#1}%
-}
 
 % Internal command for the wording of the title page.
 \newcommand\@graphic{%
-  \includegraphics[height=1.5\crestheight]{style/logo-mono}%
+  \includegraphics[height=4\crestheight]{style/logo-mono}%
 }
 
 % Command
@@ -338,18 +299,9 @@
 }
 
 % Internal command for the wording of the title page.
-\newcommand\@requirement{%
-  \ifreport This report submitted as part of the assessment schedule for: %
-  \else This \ifsubject dissertation \else thesis \fi is presented as %
-  \ifpartial part of the requirements \else required \fi \ifsubject for %
-  completion of: \else for the conferral of the degree:\fi%
-\fi
+\newcommand\@requirement{
 }
 
-% Internal command for the wording of the title page.
-\newcommand\@schooltitle{%
-  School of%
-}
 
 %
 % Research Training  Program requirement for research students to acknowledge
@@ -390,33 +342,6 @@
   \end{raggedright}
 }
 
-%
-% Declaration page
-%
-% This is a new Command (\declaration) that if you desire you can use to print
-% the standard thesis submission declaration.
-\newcommand{\declaration}{%
-  \thispagestyle{empty}
-  \section*{Declaration}
-  \begin{singlespacing}
-    I, \emph{\@author}, declare that this \ifreport report \else \ifsubject %
-    dissertation \else thesis \fi \fi is submitted in \ifpartial partial \fi %
-    fulfilment of the requirements for \ifsubject the completion of %
-    \emph{\@subject{}}, \else the conferral of the degree \emph{\@degree{}}, %
-    from the University of Sydney, \fi is wholly my own work unless %
-    otherwise referenced or acknowledged. This document has not been submitted %
-    for qualifications at any other academic institution.%
-    \par
-    \vspace{\fill}%
-    \noindent\rule{0.4\linewidth}{0.5pt}%
-    \vspace{1em}%
-    \par
-    \noindent\textbf{\@author}\vspace{1em}%
-    \par
-    \noindent\today
-  \end{singlespacing}
-  \clearpage{\pagestyle{empty}\cleardoublepage}
-}
 
 %
 % Lengths
@@ -494,7 +419,6 @@
        {\Large\@title}\\%
        \vspace{\midgap}%
       }%
-      \@author\\%
       \vspace{\midgap}%
       \textit{%
        \@requirement%
@@ -510,86 +434,16 @@
        \vspace*{\fill}%
       }%
       \fi
-      \ifhorizontal{%
-       \ifcosupervisor{%
-         \begin{tabular}{@{}ll@{}}
-         \ifmultiplesupervisors{%
-           Supervisors:%
-         }%
-         \else{%
-           Supervisor:%
-         }%
-         \fi%
-         &%
-         \ifmultiplecosupervisors{%
-           Co-supervisors:%
-         }%
-         \else{%
-           Co-supervisor:%
-         }\\%
-         \fi
-         \@supervisor%
-         &%
-         \@cosupervisor%
-         \end{tabular}
-       }\\%
-       \else{%
-         \ifnosupervisor{}%
-         \else{%
-           \ifmultiplesupervisors{%
-             Supervisors:\\%
-             \@supervisor%
-           }\\% 
-           \else{%
-             Supervisor:\\%
-             \@supervisor%
-           }\\%
-           \fi
-         }%
-         \fi
-       }%
-       \fi%
-      }%
-      \else{%
-         \ifnosupervisor{}%
-         \else{%
-           \ifmultiplesupervisors{%
-             Supervisors:\\%
-             \@supervisor\\%
-             \vspace{1ex}%
-           }%
-           \else{%
-             Supervisor:\\%
-             \@supervisor\\%
-             \vspace{1ex}%
-           }%
-           \fi%
-         }%
-         \fi%
-         \ifcosupervisor{%
-           \ifmultiplecosupervisors{%
-             Co-supervisors:\\%
-             \@cosupervisor\\%
-           }%
-           \else{%
-             Co-supervisor:\\%
-             \@cosupervisor\\%
-           }%
-           \fi%
-         }%
-         \else{}%
-         \fi%
-       }%
-      \fi%
+      \@author\\%
+      ID: 17701086\\%
+      Session: 2016-2017\\%
       \vspace{\midgap}%
-      The University of Sydney\\%
-      \ifschool{%
-        \noindent\@schooltitle{} \@school\\%
-      }%
-      \else{}%
-      \fi%
+        Department of Computer Science and Engineering\\
+        University of Chittagong\\
+        Chittagong – 4331, Bangladesh\\
+        November, 2021\\
+      
       \vspace{\midgap}%
-      \@date\vspace{\smallgap}%
     \end{singlespacing}
   \end{center}
   \ifcopyright{%
@@ -616,10 +470,9 @@
   \clearpage{\pagestyle{empty}\cleardoublepage}
 }
 
-% Execute the default options, print supervisor field and requirements for an
-% honours thesis.
 \ExecuteOptions{honours}
 \ProcessOptions\relax
+
 \endinput
 
 % Quidquid latine dictum sit altum videtur.
