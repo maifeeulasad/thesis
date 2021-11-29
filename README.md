@@ -1,6 +1,8 @@
 # CSE700-Report
 
- - View on Overleaf: https://www.overleaf.com/read/zbsdgtgxyryp
+ - View 
+   - on Overleaf: https://www.overleaf.com/read/zbsdgtgxyryp
+   - on GitHub: https://github.com/maifeeulasad/thesis/blob/master/thesis.pdf
 
 
 When writting report/thesis-report please get these tools:
