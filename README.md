@@ -9,6 +9,8 @@
 
 
 When writting report/thesis-report please get these tools:
+ - https://github.com/robindijkhof/overleaf-textarea
+   - this chrome extension lets you enable grammerly on overleaf
  - https://www.grammarly.com/premium
    - calrity/sound delivery
    - tone/formal, in-formal etc (always set to formal)
